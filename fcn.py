@@ -5,10 +5,11 @@ import tensorflow.keras as k
 import DLCVDatasets
 
 # %% Prepare CIFAR-10 dataset
+dataset_name = 'mnist'
 train_size = 60000
 test_size = 10000
 used_labels = list(range(0, 10))    # the labels to be loaded
-x_train, y_train, x_test, y_test, class_names = DLCVDatasets.get_dataset('cifar10',
+x_train, y_train, x_test, y_test, class_names = DLCVDatasets.get_dataset(dataset_name,
                                                                          used_labels=used_labels,
                                                                          training_size=train_size,
                                                                          test_size=test_size)

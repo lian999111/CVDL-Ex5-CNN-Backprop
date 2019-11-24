@@ -14,10 +14,10 @@ x_train, y_train, x_test, y_test, class_names = DLCVDatasets.get_dataset('cifar1
                                                                          test_size=test_size)
 # Normalization
 x_train, x_test = x_train / 255.0, x_test / 255.0
-
+input_shape = x_train.shape[1:4]
 # %% Define fully connected model
 fully_connected_model = k.Sequential([
-    k.layers.Flatten(input_shape=(32, 32, 3)),
+    k.layers.Flatten(input_shape=input_shape),
     k.layers.Dense(128, activation=tf.nn.relu),
     k.layers.Dense(64, activation=tf.nn.relu),
     k.layers.Dense(64, activation=tf.nn.relu),

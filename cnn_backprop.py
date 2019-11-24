@@ -19,11 +19,8 @@ x_train, x_test = x_train / 255.0, x_test / 255.0
 fully_connected_model = k.Sequential([
     k.layers.Flatten(input_shape=(32, 32, 3)),
     k.layers.Dense(128, activation=tf.nn.relu),
-    k.layers.Dropout(0.5),
     k.layers.Dense(128, activation=tf.nn.relu),
-    k.layers.Dropout(0.5),
     k.layers.Dense(64, activation=tf.nn.relu),
-    k.layers.Dropout(0.5),
     k.layers.Dense(10, activation=tf.nn.softmax)
 ])
 

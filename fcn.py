@@ -28,10 +28,10 @@ fully_connected_model = k.Sequential([
 fully_connected_model.summary()
 
 # %% Callback for early stopping
-class myCallback(tf.keras.callbacks.Callback):
+class MyCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs={}):
-        if(logs.get('acc') > 0.9):
-            print("\nReached 90% accuracy so cancelling training!")
+        if(logs.get('accuracy') > 0.95):
+            print("\nReached 95% accuracy so cancelling training!")
             self.model.stop_training = True
 
 # %% Compile fully_connected model
@@ -43,6 +43,6 @@ fully_connected_model.compile(optimizer=Adam(lr=0.001),
 
 # %% Train model
 fully_connected_model.fit(x_train, y_train, validation_data=(x_test, y_test),
-                          epochs=15, batch_size=64, verbose=2)
+                          epochs=15, batch_size=64, verbose=2, callbacks=[MyCallback()])
 
 # %%
